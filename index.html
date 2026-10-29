@@ -4,13 +4,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fff8ed">
 <title>A Little Something for Alex ♡</title>
 
 <style>
 :root {
-  --cream: #fff9ef;
+  --cream: #fff8ed;
   --paper: #fffdf7;
-  --beige: #ead9c5;
+  --beige: #ead8c2;
   --brown: #8b6d58;
   --ink: #594638;
   --pink: #e8b8b3;
@@ -28,23 +29,23 @@ body {
   line-height: 1.7;
 }
 
-button { font: inherit; cursor: pointer; }
+body.intro-open { overflow: hidden; }
+
+button, a { font: inherit; }
+button { cursor: pointer; }
 
 button:focus-visible, a:focus-visible {
   outline: 3px solid var(--pink);
   outline-offset: 4px;
 }
 
-body.intro-open { overflow: hidden; }
-
-h1, h2, h3 { line-height: 1.25; }
-
-h1, h2 { font-weight: normal; }
-
 a { color: var(--brown); }
 
+h1, h2, h3 { line-height: 1.25; }
+h1, h2 { font-weight: normal; }
+
 .paper-card {
-  background: rgba(255,253,247,.94);
+  background: rgba(255,253,247,.96);
   border: 1px solid var(--beige);
   border-radius: 18px;
   padding: 25px;
@@ -70,7 +71,10 @@ header .eyebrow {
   text-transform: uppercase;
 }
 
-header h1 { font-size: clamp(2.2rem, 7vw, 4rem); margin: 12px 0; }
+header h1 {
+  font-size: clamp(2.2rem, 7vw, 4rem);
+  margin: 12px 0;
+}
 
 header p { max-width: 520px; margin: auto; }
 
@@ -82,11 +86,17 @@ header p { max-width: 520px; margin: auto; }
 
 section { margin: 35px 0 70px; }
 
-.section-heading { text-align: center; margin-bottom: 25px; }
+.section-heading {
+  text-align: center;
+  margin-bottom: 25px;
+}
 
-.section-heading h2 { font-size: clamp(1.7rem, 5vw, 2.5rem); }
+.section-heading h2 {
+  font-size: clamp(1.7rem, 5vw, 2.5rem);
+}
 
 .soft-button {
+  display: inline-block;
   border: 1px solid #d9c3ad;
   background: #f5e8d8;
   color: #705643;
@@ -95,18 +105,31 @@ section { margin: 35px 0 70px; }
   transition: transform .2s, background .2s;
 }
 
-.soft-button:hover { transform: translateY(-2px); background: #eedbc6; }
+.soft-button:hover {
+  transform: translateY(-2px);
+  background: #eedbc6;
+}
 
 .hidden-content { display: none; }
 
-.hidden-content.show { display: block; animation: fade-in .5s ease; }
+.hidden-content.show {
+  display: block;
+  animation: fade-in .5s ease;
+}
 
 @keyframes fade-in {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* FIRST THING ALEX SEES: THE ENVELOPE */
+.small-label {
+  color: #a08068;
+  letter-spacing: 2px;
+  font-size: .8rem;
+  text-transform: uppercase;
+}
+
+/* WELCOME ENVELOPE */
 
 .intro-overlay {
   position: fixed;
@@ -115,7 +138,7 @@ section { margin: 35px 0 70px; }
   display: grid;
   place-items: center;
   padding: 20px;
-  background: #f9efdf;
+  background-color: #f9efdf;
   background-image: radial-gradient(#d8c2a744 1px, transparent 1px);
   background-size: 22px 22px;
   transition: opacity .5s, visibility .5s;
@@ -133,11 +156,14 @@ section { margin: 35px 0 70px; }
 }
 
 .intro-title {
-  font-size: clamp(1.5rem, 5vw, 2.1rem);
+  font-size: clamp(1.7rem, 5vw, 2.2rem);
   margin: 0 0 8px;
 }
 
-.intro-subtitle { margin: 0 0 25px; font-size: .95rem; }
+.intro-subtitle {
+  margin: 0 0 25px;
+  font-size: .95rem;
+}
 
 .envelope-wrap {
   position: relative;
@@ -223,7 +249,6 @@ section { margin: 35px 0 70px; }
   text-align: left;
   font-size: .86rem;
   line-height: 1.55;
-  opacity: .98;
 }
 
 .letter-paper p { margin: 8px 0; }
@@ -242,7 +267,10 @@ section { margin: 35px 0 70px; }
 
 .envelope-wrap.opened .envelope-heart { opacity: 0; }
 
-.envelope-hint { margin-top: 12px; font-size: .9rem; }
+.envelope-hint {
+  margin-top: 12px;
+  font-size: .9rem;
+}
 
 .close-intro {
   display: none;
@@ -255,20 +283,13 @@ section { margin: 35px 0 70px; }
   border-radius: 50%;
   background: #fffaf1;
   color: #705643;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
+  line-height: 1;
 }
 
-.close-intro.visible { display: block; animation: fade-in .3s ease; }
-
-.intro-overlay.dismissed .close-intro { display: none; }
-
-/* MAIN WELCOME */
-
-.small-label {
-  color: #a08068;
-  letter-spacing: 2px;
-  font-size: .8rem;
-  text-transform: uppercase;
+.close-intro.visible {
+  display: block;
+  animation: fade-in .3s ease;
 }
 
 /* LOVE LETTER */
@@ -278,9 +299,12 @@ section { margin: 35px 0 70px; }
   white-space: pre-line;
 }
 
-.signature { text-align: right; font-style: italic; }
+.signature {
+  text-align: right;
+  font-style: italic;
+}
 
-/* 100 REASONS */
+/* REASONS */
 
 .reasons-grid {
   display: grid;
@@ -295,11 +319,15 @@ section { margin: 35px 0 70px; }
   padding: 12px 14px;
   border-radius: 12px;
   font-size: .95rem;
+  overflow-wrap: anywhere;
 }
 
-.reason span { color: #b17e77; margin-right: 7px; }
+.reason span {
+  color: #b17e77;
+  margin-right: 7px;
+}
 
-/* RANDOM SURPRISE MESSAGES */
+/* THREE RANDOM OPEN ME SURPRISES */
 
 .surprise-layer {
   position: fixed;
@@ -320,8 +348,8 @@ section { margin: 35px 0 70px; }
   box-shadow: 0 3px 10px #6f4e3210;
   font-size: .85rem;
   white-space: nowrap;
-  animation: floaty 3s ease-in-out infinite;
-  transition: transform .2s, background .2s;
+  animation: surprise-float 3s ease-in-out infinite;
+  transition: transform .2s, opacity .25s;
 }
 
 .surprise-button:hover {
@@ -329,9 +357,15 @@ section { margin: 35px 0 70px; }
   background: #f6e7d7;
 }
 
-@keyframes floaty {
-  0%, 100% { margin-top: 0; }
-  50% { margin-top: -5px; }
+.surprise-button.disappearing {
+  opacity: 0;
+  transform: scale(.35);
+  pointer-events: none;
+}
+
+@keyframes surprise-float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -5px; }
 }
 
 .surprise-popup {
@@ -358,7 +392,10 @@ section { margin: 35px 0 70px; }
   animation: fade-in .3s ease;
 }
 
-.surprise-popup-card h3 { font-size: 1.7rem; font-weight: normal; }
+.surprise-popup-card h3 {
+  font-size: 1.7rem;
+  font-weight: normal;
+}
 
 .popup-close {
   position: absolute;
@@ -367,10 +404,10 @@ section { margin: 35px 0 70px; }
   border: 0;
   background: transparent;
   color: #8b6d58;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
 }
 
-/* MUSIC */
+/* MUSIC BUTTON */
 
 .music-button {
   position: fixed;
@@ -386,122 +423,170 @@ section { margin: 35px 0 70px; }
   font-size: .85rem;
 }
 
-/* LITTLE PIXEL CHIBI */
+/* EXTRA PIXELATED CHIBI BOY */
 
 .pixel-boy {
   position: fixed;
-  right: 18px;
+  right: 20px;
   bottom: 12px;
-  width: 66px;
-  height: 100px;
+  width: 76px;
+  height: 108px;
   z-index: 15;
   image-rendering: pixelated;
   pointer-events: none;
-  animation: pixel-bounce 1.5s steps(2,end) infinite;
+  transform-origin: bottom center;
+  animation: pixel-idle 1.15s steps(2, end) infinite;
 }
 
 .pixel-hair {
   position: absolute;
-  left: 9px;
+  z-index: 5;
+  left: 12px;
   top: 3px;
-  width: 43px;
-  height: 27px;
-  background: #242025;
+  width: 44px;
+  height: 26px;
+  background: #211d22;
   box-shadow:
-    -4px 4px #242025, 4px -4px #242025,
-    8px 0 #242025, 12px 4px #242025,
-    20px 0 #242025, 28px 4px #242025,
-    36px 8px #242025, -8px 12px #242025,
-    0 12px #353037, 8px 8px #353037,
-    16px 12px #242025, 24px 8px #353037,
-    32px 12px #242025, 4px 16px #242025,
-    20px 16px #242025, 36px 16px #242025;
+    -4px 4px #211d22,
+    -8px 8px #211d22,
+    -4px 12px #211d22,
+    0 -4px #211d22,
+    8px -4px #211d22,
+    16px -4px #211d22,
+    24px 0 #211d22,
+    32px 4px #211d22,
+    36px 8px #211d22,
+    40px 12px #211d22,
+    4px 4px #393139,
+    12px 0 #393139,
+    20px 4px #393139,
+    28px 8px #393139,
+    8px 12px #211d22,
+    16px 8px #211d22,
+    24px 12px #211d22,
+    32px 16px #211d22,
+    4px 20px #211d22,
+    12px 16px #211d22,
+    20px 20px #211d22,
+    28px 16px #211d22;
 }
 
 .pixel-face {
   position: absolute;
-  left: 17px;
+  z-index: 3;
+  left: 19px;
   top: 24px;
-  width: 30px;
-  height: 22px;
+  width: 34px;
+  height: 24px;
   background: #f2c5a9;
-  box-shadow: -4px 4px #f2c5a9, 4px 4px #f2c5a9;
+  box-shadow:
+    -4px 4px #f2c5a9,
+    4px 4px #f2c5a9,
+    0 4px #e6aa91;
 }
 
 .pixel-face::before {
   content: "";
   position: absolute;
-  left: 4px;
-  top: 8px;
-  width: 4px;
-  height: 6px;
-  background: #211b20;
-  box-shadow: 17px 0 #211b20, 1px 1px #fff0d9, 18px 1px #fff0d9;
+  left: 0;
+  top: -4px;
+  width: 8px;
+  height: 8px;
+  background: #211d22;
+  box-shadow:
+    8px 4px #211d22,
+    16px 0 #211d22,
+    24px 4px #211d22,
+    4px 8px #211d22,
+    20px 8px #211d22;
 }
 
 .pixel-face::after {
   content: "";
   position: absolute;
-  left: 0;
-  top: 15px;
-  width: 5px;
-  height: 3px;
-  background: #e99b91;
-  box-shadow: 25px 0 #e99b91;
+  left: 5px;
+  top: 9px;
+  width: 4px;
+  height: 6px;
+  background: #211b20;
+  box-shadow:
+    19px 0 #211b20,
+    1px 1px #fff0d9,
+    20px 1px #fff0d9;
 }
 
 .pixel-neck {
   position: absolute;
-  left: 27px;
-  top: 44px;
-  width: 10px;
+  left: 30px;
+  top: 45px;
+  width: 12px;
   height: 7px;
   background: #e8b49b;
 }
 
 .pixel-sweater {
   position: absolute;
-  left: 12px;
-  top: 49px;
+  left: 15px;
+  top: 50px;
   width: 40px;
   height: 27px;
   background: #242124;
-  box-shadow: -4px 4px #242124, 4px 4px #242124, 0 8px #171619;
+  box-shadow:
+    -4px 4px #242124,
+    4px 4px #242124,
+    0 4px #393238,
+    0 8px #171619,
+    4px 0 #302b30;
 }
 
 .pixel-arms {
   position: absolute;
-  top: 53px;
-  left: 7px;
+  z-index: 1;
+  left: 8px;
+  top: 54px;
   width: 8px;
-  height: 20px;
+  height: 19px;
   background: #242124;
-  box-shadow: 43px 0 #242124;
+  box-shadow:
+    -2px 4px #242124,
+    44px 0 #242124,
+    46px 4px #242124;
 }
 
 .pixel-jeans {
   position: absolute;
+  left: 19px;
   top: 78px;
-  left: 17px;
   width: 30px;
-  height: 13px;
+  height: 15px;
   background: #596b83;
-  box-shadow: 0 4px #46566d, 12px 0 #46566d;
+  box-shadow:
+    -2px 4px #46566d,
+    12px 0 #46566d,
+    14px 4px #46566d,
+    0 8px #3c4a60;
 }
 
 .pixel-shoes {
   position: absolute;
-  left: 13px;
-  top: 92px;
+  left: 14px;
+  top: 94px;
   width: 15px;
   height: 6px;
   background: #171619;
-  box-shadow: 19px 0 #171619, 0 3px #514841, 19px 3px #514841;
+  box-shadow:
+    19px 0 #171619,
+    -2px 3px #514841,
+    17px 3px #514841,
+    0 5px #171619,
+    19px 5px #171619;
 }
 
-@keyframes pixel-bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
+@keyframes pixel-idle {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-2px) rotate(-1deg); }
+  50% { transform: translateY(-5px) rotate(0deg); }
+  75% { transform: translateY(-2px) rotate(1deg); }
 }
 
 footer {
@@ -515,7 +600,7 @@ footer {
   .paper-card { padding: 19px; }
   header { min-height: 62vh; }
   .surprise-button { font-size: .74rem; padding: 6px 9px; }
-  .pixel-boy { transform-origin: bottom right; scale: .85; right: 8px; }
+  .pixel-boy { right: 8px; bottom: 10px; scale: .85; }
   .music-button { left: 8px; bottom: 8px; }
 }
 
@@ -532,9 +617,10 @@ footer {
 
 <body class="intro-open">
 
-<!-- The envelope intro is the first thing Alex sees -->
+<!-- FIRST THING ALEX SEES -->
 <div class="intro-overlay" id="introOverlay">
-  <button class="close-intro" id="closeIntro" aria-label="Close welcome letter">×</button>
+  <button class="close-intro" id="closeIntro"
+    aria-label="Close welcome letter">×</button>
 
   <div class="intro-content">
     <p class="small-label">A little something for you</p>
@@ -542,7 +628,8 @@ footer {
     <p class="intro-subtitle">Someone made something just for you.</p>
 
     <div class="envelope-wrap" id="envelopeWrap"
-         role="button" tabindex="0" aria-label="Open your welcome letter">
+      role="button" tabindex="0"
+      aria-label="Open your welcome letter">
       <div class="envelope">
         <div class="letter-paper">
           <strong>Dear Alex,</strong>
@@ -556,26 +643,29 @@ footer {
       </div>
     </div>
 
-    <p class="envelope-hint" id="envelopeHint">♡ Click the envelope to open it ♡</p>
+    <p class="envelope-hint" id="envelopeHint">
+      ♡ Click the envelope to open it ♡
+    </p>
   </div>
 </div>
 
-<!-- Surprise popup -->
-<div class="surprise-popup" id="surprisePopup" role="dialog"
-     aria-modal="true" aria-labelledby="popupMessage">
+<!-- SURPRISE MESSAGE POPUP -->
+<div class="surprise-popup" id="surprisePopup"
+  role="dialog" aria-modal="true" aria-labelledby="popupMessage">
   <div class="surprise-popup-card">
-    <button class="popup-close" id="popupClose" aria-label="Close">×</button>
+    <button class="popup-close" id="popupClose"
+      aria-label="Close">×</button>
     <div style="font-size:2rem">♡</div>
-    <h3 id="popupMessage">I love you!</h3>
+    <h3 id="popupMessage">I love you</h3>
     <p>Just a tiny reminder from someone who loves you.</p>
     <button class="soft-button" id="popupOkay">Awww ♡</button>
   </div>
 </div>
 
-<!-- Scattered surprise buttons -->
-<div class="surprise-layer" id="surpriseLayer" aria-label="Little surprises"></div>
+<!-- ONLY THREE RANDOM OPEN ME BUTTONS -->
+<div class="surprise-layer" id="surpriseLayer"
+  aria-label="Little surprises"></div>
 
-<!-- Main website -->
 <header>
   <div>
     <p class="eyebrow">A little website made with love</p>
@@ -583,7 +673,10 @@ footer {
     <h1>100 Reasons I Love You</h1>
     <p>A little place filled with all the things I want you to know, Alex.</p>
     <div class="heart-divider">✧ ♡ ✧</div>
-    <a class="soft-button" href="#reasons" style="display:inline-block;text-decoration:none;margin-top:15px">Explore your little surprise ↓</a>
+    <a class="soft-button" href="#reasons"
+      style="text-decoration:none;margin-top:15px">
+      Explore your little surprise ↓
+    </a>
   </div>
 </header>
 
@@ -597,9 +690,12 @@ footer {
 
     <div class="paper-card">
       <div style="text-align:center;font-size:1.5rem;color:#c9948e">♡</div>
-      <button class="soft-button" id="letterToggle" style="display:block;margin:10px auto 18px">Open your letter ♡</button>
-      <div class="hidden-content letter-content" id="loveLetter">
-Dear Alex,
+      <button class="soft-button" id="letterToggle"
+        style="display:block;margin:10px auto 18px">
+        Open your letter ♡
+      </button>
+
+      <div class="hidden-content letter-content" id="loveLetter">Dear Alex,
 
 I love you so much. You mean so much to me. I love spending time with you and being with you. You make my days feel so much better, and I hope to always be with you. I hope that we can continue to have these fun and lovely moments together, and that we can make wonderful memories. You mean so much to me, and I hope we will always love each other. I hope you know I love you so much and that won't change, and that I will always care for you.
 
@@ -616,8 +712,13 @@ I love you so much. You mean so much to me. I love spending time with you and be
     </div>
 
     <div class="paper-card">
-      <p style="text-align:center">Each one is a little reminder of how special you are to me.</p>
-      <button class="soft-button" id="reasonsToggle" style="display:block;margin:20px auto">Read all 100 reasons ♡</button>
+      <p style="text-align:center">
+        Each one is a little reminder of how special you are to me.
+      </p>
+      <button class="soft-button" id="reasonsToggle"
+        style="display:block;margin:20px auto">
+        Read all 100 reasons ♡
+      </button>
       <div class="hidden-content" id="reasonsContent">
         <div class="reasons-grid" id="reasonsGrid"></div>
       </div>
@@ -633,12 +734,14 @@ I love you so much. You mean so much to me. I love spending time with you and be
       <p>You're loved. You're appreciated. You're important to me.</p>
       <p>I'm so happy I get to make memories with you. ♡</p>
       <div class="heart-divider">♡ ✧ ♡</div>
-      <p style="font-style:italic">P.S. Keep looking around. I might've hidden a few more things for you.</p>
+      <p style="font-style:italic">
+        P.S. Keep looking around. I might've hidden a few more things for you.
+      </p>
     </div>
   </section>
 </main>
 
-<!-- Tiny pixel character -->
+<!-- TINY PIXEL CHIBI -->
 <div class="pixel-boy" aria-hidden="true">
   <div class="pixel-hair"></div>
   <div class="pixel-face"></div>
@@ -649,7 +752,9 @@ I love you so much. You mean so much to me. I love spending time with you and be
   <div class="pixel-shoes"></div>
 </div>
 
-<button class="music-button" id="musicToggle">♫ Play soft music</button>
+<button class="music-button" id="musicToggle">
+  ♫ Play lo-fi
+</button>
 
 <footer>
   Made with love, just for Alex ♡<br>
@@ -657,7 +762,7 @@ I love you so much. You mean so much to me. I love spending time with you and be
 </footer>
 
 <script>
-/* Welcome envelope */
+/* WELCOME ENVELOPE */
 const introOverlay = document.getElementById("introOverlay");
 const envelopeWrap = document.getElementById("envelopeWrap");
 const envelopeHint = document.getElementById("envelopeHint");
@@ -667,12 +772,12 @@ let closeTimer;
 
 function openEnvelope() {
   if (envelopeOpened) return;
+
   envelopeOpened = true;
   envelopeWrap.classList.add("opened");
   envelopeWrap.setAttribute("aria-label", "Your welcome letter is open");
   envelopeHint.textContent = "♡ A little message just for you ♡";
 
-  // Show the X only after the letter has had time to come out.
   closeTimer = setTimeout(() => {
     closeIntro.classList.add("visible");
   }, 3000);
@@ -685,23 +790,28 @@ function dismissIntro() {
 }
 
 envelopeWrap.addEventListener("click", openEnvelope);
+
 envelopeWrap.addEventListener("keydown", event => {
   if (event.key === "Enter" || event.key === " ") {
     event.preventDefault();
     openEnvelope();
   }
 });
+
 closeIntro.addEventListener("click", dismissIntro);
 
-/* Love letter open/close */
+/* LOVE LETTER OPEN/CLOSE */
 document.getElementById("letterToggle").addEventListener("click", () => {
   const letter = document.getElementById("loveLetter");
   letter.classList.toggle("show");
+
   document.getElementById("letterToggle").textContent =
-    letter.classList.contains("show") ? "Close your letter ♡" : "Open your letter ♡";
+    letter.classList.contains("show")
+      ? "Close your letter ♡"
+      : "Open your letter ♡";
 });
 
-/* The 100 reasons */
+/* ALL 100 REASONS */
 const reasons = [
 "You're sweet",
 "You're kind",
@@ -806,11 +916,14 @@ const reasons = [
 ];
 
 const reasonsGrid = document.getElementById("reasonsGrid");
+
 reasons.forEach((reason, index) => {
   const item = document.createElement("div");
   item.className = "reason";
+
   const number = document.createElement("span");
   number.textContent = String(index + 1).padStart(2, "0") + ".";
+
   item.append(number, document.createTextNode(reason));
   reasonsGrid.appendChild(item);
 });
@@ -818,61 +931,99 @@ reasons.forEach((reason, index) => {
 document.getElementById("reasonsToggle").addEventListener("click", () => {
   const content = document.getElementById("reasonsContent");
   content.classList.toggle("show");
+
   document.getElementById("reasonsToggle").textContent =
-    content.classList.contains("show") ? "Hide the reasons ♡" : "Read all 100 reasons ♡";
+    content.classList.contains("show")
+      ? "Hide the reasons ♡"
+      : "Read all 100 reasons ♡";
 });
 
-/* Randomly scattered Open Me surprises */
+/* EXACTLY THREE OPEN ME MESSAGES */
 const surpriseMessages = [
-  "You're cute",
   "I love you",
   "You're handsome",
-  "You're adorable",
-  "You're my favorite",
-  "You make me smile",
-  "Sending you a hug ♡",
-  "You're so special",
-  "I miss you",
-  "You're amazing",
-  "Kisses for you ♡",
-  "You deserve all the love",
-  "You're my happy place",
-  "One more reason to smile",
-  "You're precious to me"
+  "You're cute"
 ];
 
 const surpriseLayer = document.getElementById("surpriseLayer");
 const surprisePopup = document.getElementById("surprisePopup");
 const popupMessage = document.getElementById("popupMessage");
 
+function playPopSound() {
+  try {
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    if (!AudioCtx) return;
+
+    const ctx = new AudioCtx();
+    const oscillator = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    oscillator.type = "sine";
+    oscillator.frequency.setValueAtTime(650, ctx.currentTime);
+    oscillator.frequency.exponentialRampToValueAtTime(
+      260, ctx.currentTime + 0.09
+    );
+
+    gain.gain.setValueAtTime(0.001, ctx.currentTime);
+    gain.gain.linearRampToValueAtTime(
+      0.12, ctx.currentTime + 0.012
+    );
+    gain.gain.exponentialRampToValueAtTime(
+      0.001, ctx.currentTime + 0.12
+    );
+
+    oscillator.connect(gain);
+    gain.connect(ctx.destination);
+    oscillator.start();
+    oscillator.stop(ctx.currentTime + 0.13);
+    oscillator.onended = () => ctx.close();
+  } catch (error) {
+    // The surprise still works if audio is unavailable.
+  }
+}
+
 function placeSurprises() {
   surpriseLayer.innerHTML = "";
-  const mobile = window.innerWidth < 600;
-  const count = mobile ? 5 : 9;
-  const shuffled = [...surpriseMessages].sort(() => Math.random() - .5);
-  const selected = shuffled.slice(0, count);
 
-  // Always include these three messages.
-  ["You're cute", "I love you", "You're handsome"].forEach(message => {
-    if (!selected.includes(message)) selected.push(message);
-  });
+  const positions = [
+    { left: 8, top: 28 },
+    { left: 65, top: 43 },
+    { left: 27, top: 76 },
+    { left: 72, top: 18 },
+    { left: 8, top: 65 },
+    { left: 42, top: 24 },
+    { left: 55, top: 78 },
+    { left: 35, top: 53 },
+    { left: 75, top: 63 }
+  ];
 
-  selected.forEach((message, index) => {
+  // Shuffle locations for each page visit.
+  positions.sort(() => Math.random() - 0.5);
+
+  surpriseMessages.forEach((message, index) => {
     const button = document.createElement("button");
     button.className = "surprise-button";
     button.textContent = "Open Me! ♡";
     button.setAttribute("aria-label", "Open a surprise message");
 
-    // Spread the buttons around the screen, not just at the sides.
-    const left = 4 + Math.random() * 76;
-    const top = 13 + Math.random() * 72;
-    button.style.left = left + "%";
-    button.style.top = top + "%";
-    button.style.animationDelay = (Math.random() * 2) + "s";
+    const position = positions[index];
+    button.style.left = position.left + "%";
+    button.style.top = position.top + "%";
+    button.style.animationDelay = (Math.random() * 1.5) + "s";
 
     button.addEventListener("click", () => {
+      if (button.disabled) return;
+
+      button.disabled = true;
+      playPopSound();
+
+      // Make the button disappear with a little pop.
+      button.classList.add("disappearing");
+      setTimeout(() => button.remove(), 250);
+
       popupMessage.textContent = message;
       surprisePopup.classList.add("visible");
+      document.getElementById("popupClose").focus();
     });
 
     surpriseLayer.appendChild(button);
@@ -882,53 +1033,158 @@ function placeSurprises() {
 function closeSurprise() {
   surprisePopup.classList.remove("visible");
 }
+
 document.getElementById("popupClose").addEventListener("click", closeSurprise);
 document.getElementById("popupOkay").addEventListener("click", closeSurprise);
+
 surprisePopup.addEventListener("click", event => {
   if (event.target === surprisePopup) closeSurprise();
 });
+
 document.addEventListener("keydown", event => {
   if (event.key === "Escape") closeSurprise();
 });
+
 placeSurprises();
 
-/* Soft, gentle original ambient music made in the browser */
+/* ORIGINAL LO-FI-STYLE BEAT */
 let audioContext;
+let masterGain;
 let musicTimer;
 let musicPlaying = false;
-let noteIndex = 0;
-let masterGain;
+let beatStep = 0;
 
-const melody = [
-  [523.25, 0.22], [659.25, 0.20], [783.99, 0.25], [659.25, 0.22],
-  [587.33, 0.22], [698.46, 0.22], [783.99, 0.28], [698.46, 0.22],
-  [523.25, 0.22], [659.25, 0.20], [880.00, 0.30], [783.99, 0.28],
-  [698.46, 0.24], [659.25, 0.25], [587.33, 0.30], [523.25, 0.35]
+const bpm = 80;
+const stepDuration = 60000 / bpm / 4;
+
+const chordProgression = [
+  [261.63, 329.63, 392.00, 493.88],
+  [220.00, 261.63, 329.63, 392.00],
+  [174.61, 220.00, 261.63, 329.63],
+  [196.00, 246.94, 293.66, 349.23]
 ];
 
-function playNote() {
-  if (!musicPlaying || !audioContext) return;
+function playTone(frequency, duration, volume, type = "sine", delay = 0) {
+  if (!audioContext || !masterGain) return;
 
-  const [frequency, duration] = melody[noteIndex % melody.length];
-  noteIndex++;
-
+  const start = audioContext.currentTime + delay;
   const oscillator = audioContext.createOscillator();
   const gain = audioContext.createGain();
-  const now = audioContext.currentTime;
 
-  oscillator.type = "sine";
-  oscillator.frequency.setValueAtTime(frequency, now);
+  oscillator.type = type;
+  oscillator.frequency.setValueAtTime(frequency, start);
 
-  gain.gain.setValueAtTime(0.0001, now);
-  gain.gain.linearRampToValueAtTime(0.035, now + 0.04);
-  gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+  gain.gain.setValueAtTime(0.0001, start);
+  gain.gain.linearRampToValueAtTime(volume, start + 0.025);
+  gain.gain.exponentialRampToValueAtTime(
+    0.0001, start + duration
+  );
 
   oscillator.connect(gain);
   gain.connect(masterGain);
-  oscillator.start(now);
-  oscillator.stop(now + duration + 0.05);
+  oscillator.start(start);
+  oscillator.stop(start + duration + 0.03);
+}
 
-  musicTimer = setTimeout(playNote, 420);
+function playKick() {
+  const start = audioContext.currentTime;
+  const oscillator = audioContext.createOscillator();
+  const gain = audioContext.createGain();
+
+  oscillator.type = "sine";
+  oscillator.frequency.setValueAtTime(105, start);
+  oscillator.frequency.exponentialRampToValueAtTime(43, start + 0.14);
+
+  gain.gain.setValueAtTime(0.34, start);
+  gain.gain.exponentialRampToValueAtTime(0.001, start + 0.16);
+
+  oscillator.connect(gain);
+  gain.connect(masterGain);
+  oscillator.start(start);
+  oscillator.stop(start + 0.18);
+}
+
+function playSnare() {
+  const length = Math.floor(audioContext.sampleRate * 0.12);
+  const buffer = audioContext.createBuffer(
+    1, length, audioContext.sampleRate
+  );
+  const data = buffer.getChannelData(0);
+
+  for (let i = 0; i < length; i++) {
+    data[i] = (Math.random() * 2 - 1) * (1 - i / length);
+  }
+
+  const noise = audioContext.createBufferSource();
+  const filter = audioContext.createBiquadFilter();
+  const gain = audioContext.createGain();
+
+  noise.buffer = buffer;
+  filter.type = "highpass";
+  filter.frequency.value = 1200;
+  gain.gain.value = 0.10;
+
+  noise.connect(filter);
+  filter.connect(gain);
+  gain.connect(masterGain);
+  noise.start();
+}
+
+function playHiHat() {
+  const length = Math.floor(audioContext.sampleRate * 0.035);
+  const buffer = audioContext.createBuffer(
+    1, length, audioContext.sampleRate
+  );
+  const data = buffer.getChannelData(0);
+
+  for (let i = 0; i < length; i++) {
+    data[i] = Math.random() * 2 - 1;
+  }
+
+  const noise = audioContext.createBufferSource();
+  const filter = audioContext.createBiquadFilter();
+  const gain = audioContext.createGain();
+
+  noise.buffer = buffer;
+  filter.type = "highpass";
+  filter.frequency.value = 6500;
+  gain.gain.value = 0.025;
+
+  noise.connect(filter);
+  filter.connect(gain);
+  gain.connect(masterGain);
+  noise.start();
+}
+
+function playChord(chord) {
+  chord.forEach((frequency, index) => {
+    playTone(frequency, 1.25, 0.025, "triangle", index * 0.035);
+  });
+}
+
+function loFiBeat() {
+  if (!musicPlaying || !audioContext) return;
+
+  const step = beatStep % 16;
+
+  if (step === 0 || step === 10) playKick();
+  if (step === 4 || step === 12) playSnare();
+  if ([2, 6, 8, 14].includes(step)) playHiHat();
+
+  if (step === 0) {
+    const chord = chordProgression[
+      Math.floor(beatStep / 16) % chordProgression.length
+    ];
+    playChord(chord);
+  }
+
+  if ([3, 7, 11, 15].includes(step)) {
+    const notes = [523.25, 587.33, 659.25, 587.33];
+    playTone(notes[(beatStep + 1) % notes.length], 0.28, 0.025);
+  }
+
+  beatStep++;
+  musicTimer = setTimeout(loFiBeat, stepDuration);
 }
 
 async function toggleMusic() {
@@ -937,28 +1193,34 @@ async function toggleMusic() {
   if (musicPlaying) {
     musicPlaying = false;
     clearTimeout(musicTimer);
-    if (audioContext) await audioContext.suspend();
-    button.textContent = "♫ Play soft music";
+    await audioContext.suspend();
+    button.textContent = "♫ Play lo-fi";
     return;
   }
 
   try {
     if (!audioContext) {
-      audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      audioContext = new (
+        window.AudioContext || window.webkitAudioContext
+      )();
+
       masterGain = audioContext.createGain();
-      masterGain.gain.value = 0.6;
+      masterGain.gain.value = 0.65;
       masterGain.connect(audioContext.destination);
     }
+
     await audioContext.resume();
     musicPlaying = true;
-    button.textContent = "♫ Pause music";
-    playNote();
+    button.textContent = "♫ Pause lo-fi";
+    loFiBeat();
   } catch (error) {
-    button.textContent = "Music unavailable";
+    button.textContent = "♫ Music unavailable";
   }
 }
 
-document.getElementById("musicToggle").addEventListener("click", toggleMusic);
+document.getElementById("musicToggle").addEventListener(
+  "click", toggleMusic
+);
 </script>
 
 </body>
